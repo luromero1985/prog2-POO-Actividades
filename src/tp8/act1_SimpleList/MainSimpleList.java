@@ -49,6 +49,14 @@ public class MainSimpleList {
 	
 	*/
 	public static void main(String[] args) {
+		ListaVinculada<String> lista = new ListaVinculada<>();
+		lista.add("A");
+		lista.add("B");
+		lista.add("C");
+
+		System.out.println(lista.indexOf("B")); // Devuelve 1
+		System.out.println(lista.indexOf("X")); // Devuelve -1
+		System.out.println(lista.indexOf(null)); // No lanza error, devuelve -1
 
 	}
 
