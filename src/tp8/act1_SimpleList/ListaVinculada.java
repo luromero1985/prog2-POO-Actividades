@@ -30,18 +30,23 @@ public class ListaVinculada <T> implements SimpleList<T>, Iterable<T>{
     public T get(int i) {
         int actual = 0;
         Nodo<T> cursor = primero;
-        while (cursor != null && actual < i) {
+        
+        while (cursor != null) {
+        	if(actual==i) {
+        		return cursor.getValor();
+        	}
             actual++;
             cursor = cursor.getSiguiente();
         }
-        if (cursor == null)
-            return null;
-        else
-            return cursor.getValor();
+         return null;   
 
 
     }
 
+	/*
+	 * Retorna la cantidad de elementos de la lista
+	 */
+	
     @Override
     public int size() {
         int i = 0;
@@ -53,6 +58,10 @@ public class ListaVinculada <T> implements SimpleList<T>, Iterable<T>{
         return i;
     }
 
+    /*
+     * Cuando una clase implementa Iterable<T>, está obligada a proporcionar el método iterator(), 
+     * que devuelve una instancia de un iterador adecuado
+     * */
     @Override
     public Iterator<T> iterator() {
         return new MiIteradorDeLista<T>(primero);

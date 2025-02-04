@@ -49,7 +49,7 @@ public class MainSimpleList {
 	
 	*/
 	public static void main(String[] args) {
-	
+
 	}
 
 }

@@ -6,6 +6,7 @@ public interface SimpleList <T> {
 		public abstract void add(T elemento);
 		public abstract T get(int i);
 		public abstract int size();
+		public abstract int indexOf(T element)
 		
 		
 		/*
