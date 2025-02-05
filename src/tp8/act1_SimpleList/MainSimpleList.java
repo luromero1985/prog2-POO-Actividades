@@ -57,6 +57,17 @@ public class MainSimpleList {
 		System.out.println(lista.indexOf("B")); // Devuelve 1
 		System.out.println(lista.indexOf("X")); // Devuelve -1
 		System.out.println(lista.indexOf(null)); // No lanza error, devuelve -1
+		
+
+		lista.add(0, "D");
+		lista.add(4, "E");
+		lista.add(5, "F");
+
+		System.out.println(lista.size()); // 3
+
+		//lista.remove(1); // Elimina "B"
+
+		System.out.println(lista.size()); // 6
 
 	}
 
