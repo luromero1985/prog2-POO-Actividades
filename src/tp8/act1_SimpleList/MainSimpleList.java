@@ -65,7 +65,7 @@ public class MainSimpleList {
 
 		System.out.println(lista.size()); // 3
 
-		//lista.remove(1); // Elimina "B"
+		lista.remove(1); // Elimina "B"
 
 		System.out.println(lista.size()); // 6
 

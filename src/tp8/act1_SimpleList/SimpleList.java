@@ -10,6 +10,7 @@ public interface SimpleList <T> {
 		public abstract void clear();
 		public abstract T add (int index, T element);
 		public abstract boolean contains(T element);
+		public abstract T remove(int index);
 		
 		
 		/*

@@ -47,6 +47,7 @@ public class ListaVinculada<T> implements SimpleList<T>, Iterable<T> {
 		Nodo<T> nuevo = new Nodo<>(elemento);
 		if (isEmpty()) {
 			primero = nuevo;
+			ultimo=primero;
 		} else {
 			ultimo.setSiguiente(nuevo);
 			ultimo = nuevo;
@@ -109,7 +110,43 @@ public class ListaVinculada<T> implements SimpleList<T>, Iterable<T> {
 	 * ● Object remove(int index); Elimina el objeto que ocupa la posición index
 	 * pasada como parámetro y lo retorna al usuario. Si no existe, retorna null.
 	 */
+	@Override
+	public T remove(int index) {
+		if (index < 0 || index >= this.size()) {
+			return null;
+		}
 
+		T encontrado;
+
+		if (index == 0) { //eliminar el primer nodo
+			encontrado = primero.getValor();
+			primero = primero.getSiguiente();
+
+			if (primero == null) {
+				ultimo = null;
+			}
+		} else { //eliminar en medio o final
+			Nodo<T> actual = primero;
+			Nodo<T> anterior = null;
+			int cursor = 0;
+			
+			while (cursor < index) {
+				anterior = actual;
+				actual = actual.getSiguiente();
+				cursor++;
+			}
+			
+			encontrado = actual.getValor();
+
+			if (actual == ultimo) {  //eliminar el último nodo
+				ultimo = anterior;
+			}
+			anterior.setSiguiente(actual.getSiguiente());
+		}
+		
+		this.size--;
+		return encontrado;
+	}
 	/*
 	 * ● void addAll(List otherList); Agrega todos los elementos de la lista
 	 * otherList pasada como parámetro al final de la lista que recibe el mensaje
@@ -136,7 +173,7 @@ public class ListaVinculada<T> implements SimpleList<T>, Iterable<T> {
     	int indice=0;
     	Nodo<T> actual=primero;
     	while(actual!=null) {
-    		if(element!null && actual.getValor().equals(element)) {
+    		if(element!=null && actual.getValor().equals(element)) {
     			return indice;
     		}else {
     			indice++;
