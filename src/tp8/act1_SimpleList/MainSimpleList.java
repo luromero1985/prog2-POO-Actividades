@@ -63,12 +63,15 @@ public class MainSimpleList {
 		lista.add(4, "E");
 		lista.add(5, "F");
 
-		System.out.println(lista.size()); // 3
-
+		System.out.println(lista.size()); // 6
+		System.out.println(lista.remove(1));
 		lista.remove(1); // Elimina "B"
 
-		System.out.println(lista.size()); // 6
-
+		System.out.println(lista.size()); // 5
+		System.out.println(lista.remove("E"));
+		lista.remove("E"); // Elimina "E"
+		
+		System.out.println(lista.size()); // 4
 	}
 
 }

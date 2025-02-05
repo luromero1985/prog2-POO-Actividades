@@ -47,7 +47,7 @@ public class ListaVinculada<T> implements SimpleList<T>, Iterable<T> {
 		Nodo<T> nuevo = new Nodo<>(elemento);
 		if (isEmpty()) {
 			primero = nuevo;
-			ultimo=primero;
+			ultimo = primero;
 		} else {
 			ultimo.setSiguiente(nuevo);
 			ultimo = nuevo;
@@ -105,6 +105,38 @@ public class ListaVinculada<T> implements SimpleList<T>, Iterable<T> {
 	 * element pasado como parámetro. Si el objeto no se encontró, retorna false.
 	 * Caso contrario retorna true.
 	 */
+	@Override
+	public boolean remove(T element) {
+		if (isEmpty()) {
+			return false;
+		}
+
+		Nodo<T> actual = primero;
+		Nodo<T> anterior = null;
+
+		while (actual != null) {
+			if (actual.getValor().equals(element)) {
+				if (anterior == null) {
+					primero = actual.getSiguiente();
+					if (primero == null) {
+						ultimo = null;
+					}
+				} else {
+					anterior.setSiguiente(actual.getSiguiente());
+					if (actual == ultimo) {
+						ultimo = anterior;
+					}
+				}
+				size--;
+				return true;
+			}
+
+			anterior = actual;
+			actual = actual.getSiguiente();
+
+		}
+		return false;
+	}
 
 	/*
 	 * ● Object remove(int index); Elimina el objeto que ocupa la posición index
@@ -118,32 +150,32 @@ public class ListaVinculada<T> implements SimpleList<T>, Iterable<T> {
 
 		T encontrado;
 
-		if (index == 0) { //eliminar el primer nodo
+		if (index == 0) { // eliminar el primer nodo
 			encontrado = primero.getValor();
 			primero = primero.getSiguiente();
 
 			if (primero == null) {
 				ultimo = null;
 			}
-		} else { //eliminar en medio o final
+		} else { // eliminar en medio o final
 			Nodo<T> actual = primero;
 			Nodo<T> anterior = null;
 			int cursor = 0;
-			
+
 			while (cursor < index) {
 				anterior = actual;
 				actual = actual.getSiguiente();
 				cursor++;
 			}
-			
+
 			encontrado = actual.getValor();
 
-			if (actual == ultimo) {  //eliminar el último nodo
+			if (actual == ultimo) { // eliminar el último nodo
 				ultimo = anterior;
 			}
 			anterior.setSiguiente(actual.getSiguiente());
 		}
-		
+
 		this.size--;
 		return encontrado;
 	}
@@ -169,19 +201,19 @@ public class ListaVinculada<T> implements SimpleList<T>, Iterable<T> {
 	 * la lista, retorna -1
 	 */
 	@Override
-    public int indexOf(T element) {
-    	int indice=0;
-    	Nodo<T> actual=primero;
-    	while(actual!=null) {
-    		if(element!=null && actual.getValor().equals(element)) {
-    			return indice;
-    		}else {
-    			indice++;
-    			actual=actual.getSiguiente();
-    		}
-    	}
-    	return -1;
-    }
+	public int indexOf(T element) {
+		int indice = 0;
+		Nodo<T> actual = primero;
+		while (actual != null) {
+			if (element != null && actual.getValor().equals(element)) {
+				return indice;
+			} else {
+				indice++;
+				actual = actual.getSiguiente();
+			}
+		}
+		return -1;
+	}
 
 	/*
 	 * ● Object get(int index); Retorna el objeto almacenado en la posición index.

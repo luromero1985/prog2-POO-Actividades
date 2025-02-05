@@ -6,11 +6,12 @@ public interface SimpleList <T> {
 		public abstract void add(T elemento);
 		public abstract T get(int i);
 		public abstract int size();
-		public abstract int indexOf(T element)
+		public abstract int indexOf(T element);
 		public abstract void clear();
 		public abstract T add (int index, T element);
 		public abstract boolean contains(T element);
 		public abstract T remove(int index);
+		public abstract boolean remove(T element);
 		
 		
 		/*
