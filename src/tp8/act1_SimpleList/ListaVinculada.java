@@ -39,11 +39,10 @@ public class ListaVinculada<T> implements SimpleList<T>, Iterable<T> {
 		return false;
 	}
 
-	
 	public Nodo<T> getPrimero() {
 		return this.primero;
 	}
-	
+
 	/*
 	 * Agrega el objeto o al final de la lista
 	 */
@@ -104,6 +103,27 @@ public class ListaVinculada<T> implements SimpleList<T>, Iterable<T> {
 	 * anteriormente ocupaba la posición index es retornado al usuario. Si la
 	 * posición index no existe retorna null.
 	 */
+
+	@Override
+	public T set(int index, T element) {
+		if (index < 0 || index >= this.size()) {
+			return null;
+		}
+
+		Nodo<T> actual = primero;
+		T elementReemplazado =null;
+		
+		for(int i=0; i<index;i++) {
+			actual = actual.getSiguiente();
+		}
+		
+		elementReemplazado =actual.getValor();
+		
+		actual.setValor(element);
+		
+		return elementReemplazado;
+
+	}
 
 	/*
 	 * ● boolean remove(Object element); Elimina la primera ocurrencia del objeto
@@ -191,16 +211,15 @@ public class ListaVinculada<T> implements SimpleList<T>, Iterable<T> {
 
 	@Override
 	public void addAll(ListaVinculada<T> otherList) {
-	    if (otherList == null || otherList.isEmpty()) {
-	        return; // No hace nada si la lista es nula o vacía
-	    }
+		if (otherList == null || otherList.isEmpty()) {
+			return; // No hace nada si la lista es nula o vacía
+		}
 
-	    for (int i = 0; i < otherList.size(); i++) {
-	        this.add(otherList.get(i)); // Usa add(T element) para insertar al final
-	    }
+		for (int i = 0; i < otherList.size(); i++) {
+			this.add(otherList.get(i)); // Usa add(T element) para insertar al final
+		}
 	}
 
-	
 	/*
 	 * ● void clear(); Elimina todos los elementos de la lista
 	 */

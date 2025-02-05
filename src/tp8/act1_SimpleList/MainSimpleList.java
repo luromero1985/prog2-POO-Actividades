@@ -75,6 +75,9 @@ public class MainSimpleList {
         
         System.out.println("\nLista después de agregar lista2:");
         imprimirLista(lista); // Imprime lista con los elementos de lista2 añadidos
+  
+        System.out.println(lista.set(3, "Z"));
+        imprimirLista(lista);
     }
 
     // Método para imprimir los elementos de la lista

@@ -13,6 +13,7 @@ public interface SimpleList <T> {
 		public abstract T remove(int index);
 		public abstract boolean remove(T element);
 		public abstract void addAll(ListaVinculada<T> otherList);
+		public abstract T set(int index, T element);
 		
 		
 		/*
