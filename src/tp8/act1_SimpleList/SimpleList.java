@@ -12,6 +12,7 @@ public interface SimpleList <T> {
 		public abstract boolean contains(T element);
 		public abstract T remove(int index);
 		public abstract boolean remove(T element);
+		public abstract void addAll(ListaVinculada<T> otherList);
 		
 		
 		/*
