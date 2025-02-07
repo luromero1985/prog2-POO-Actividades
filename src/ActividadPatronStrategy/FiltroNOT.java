@@ -1,4 +1,4 @@
-package strategy;
+package ActividadPatronStrategy.strategy;
 
 public class FiltroNOT implements FiltroComida{
 

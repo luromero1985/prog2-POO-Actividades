@@ -1,4 +1,4 @@
-package strategy;
+package ActividadPatronStrategy.strategy;
 
 public class FiltroPorTipo implements FiltroComida{
 	private String tipo;
