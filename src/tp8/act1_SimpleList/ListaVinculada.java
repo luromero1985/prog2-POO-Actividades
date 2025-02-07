@@ -28,7 +28,7 @@ public class ListaVinculada<T> implements SimpleList<T>, Iterable<T> {
 
 	@Override
 	public boolean contains(T element) {
-		Node<T> actual = primero;
+		Nodo<T> actual = primero;
 		while (actual != null) {
 			if (actual.getValor().equals(element)) {
 				return true;
