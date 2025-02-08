@@ -8,7 +8,7 @@ public abstract class Comida {
 	
 	
 	public Comida(String nombre, String tipo, String modoPreparacion) {
-		super();
+		
 		this.nombre = nombre;
 		this.tipo = tipo;
 		this.modoPreparacion = modoPreparacion;

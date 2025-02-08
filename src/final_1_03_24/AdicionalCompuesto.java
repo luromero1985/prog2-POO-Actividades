@@ -8,7 +8,6 @@ public class AdicionalCompuesto extends Adicional {
 	
 	
 	public AdicionalCompuesto(Adicional ad1, Adicional ad2) {
-		super();
 		this.ad1 = ad1;
 		this.ad2 = ad2;
 	}
