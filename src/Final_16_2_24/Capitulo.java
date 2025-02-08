@@ -42,4 +42,8 @@ public class Capitulo extends Coleccion{
 			this.autores.add(a);
 		}
 	}
+	
+	public Coleccion getCopia() {
+		return null;
+	}
 }
