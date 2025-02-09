@@ -4,4 +4,5 @@ public abstract class Estructura {
 
 	
 	public abstract void addObjeto(Object o) ;
+	public abstract void removeObjeto(Object o);
 	}

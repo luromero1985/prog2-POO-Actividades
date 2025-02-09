@@ -8,8 +8,8 @@ public class Libro extends Coleccion {
 	private ArrayList<Coleccion> colecciones;
 	private LocalDate anioiPublic;
 
-	public Libro(Persona e, String t, LocalDate anioiPublic) {
-		super(e, t);
+	public Libro(Persona e, String t, Calculador c, LocalDate anioiPublic) {
+		super(e, t, c);
 		this.anioiPublic = anioiPublic;
 		this.colecciones = new ArrayList<>();
 	}
@@ -21,14 +21,17 @@ public class Libro extends Coleccion {
 	public void setAnioiPublic(LocalDate anioiPublic) {
 		this.anioiPublic = anioiPublic;
 	}
-	
-	
+
 	public void addColeccion(Coleccion c) {
-		if(!this.colecciones.contains(c)) {
+		if (!this.colecciones.contains(c)) {
 			this.colecciones.add(c);
 		}
 	}
 
+	public ArrayList<Coleccion> getColecciones(){
+		return new ArrayList<>(this.colecciones);
+	}
+	
 	@Override
 	public int getCantPag() {
 		int cant = 0;
@@ -39,9 +42,42 @@ public class Libro extends Coleccion {
 	}
 
 	@Override
-	public Coleccion getCopia() {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Persona> getAutores() {
+		ArrayList<Persona> autores = new ArrayList<>();
+		for (Coleccion c : this.colecciones) {
+			for (Persona a : c.getAutores()) {
+				if (!autores.contains(a)) {
+					autores.add(a);
+				}
+			}
+		}
+		return autores;
 	}
+
+	@Override
+	public Coleccion getCopia(Filtro f) {
+		Libro copia = new Libro(this.getEditor(), this.getTitulo(), this.getCalculador(), this.getAnioiPublic());
+		for (Coleccion c : this.colecciones) {
+			Coleccion hijo = c.getCopia(f);
+			if (hijo != null) {
+				copia.addColeccion(hijo);
+			}
+		}
+		if (!copia.getColecciones().isEmpty()) {
+			return copia;
+		} else {
+			return null;
+		}
+	}
+
+	@Override
+	public int getPrecio() {
+		int total = 0;
+		for (Coleccion c : colecciones) {
+			total += c.getPrecio();
+		}
+		return total;
+	}
+	
 
 }

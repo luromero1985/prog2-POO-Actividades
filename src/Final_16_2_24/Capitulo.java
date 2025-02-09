@@ -7,12 +7,14 @@ public class Capitulo extends Coleccion{
 	private int cantPag;
 	private String tema;
 	private ArrayList<Persona> autores;
+	private Calculador calculador;
 	
-	public Capitulo(Persona e, String t, int cantPag, String tema) {
+	public Capitulo(Persona e, String t, Calculador c, int cantPag, String tema) {
 		super(e, t);
 		this.cantPag = cantPag;
 		this.tema = tema;
 		this.autores=new ArrayList<>();
+		this.calculador=c;
 	}
 
 	@Override
@@ -33,6 +35,14 @@ public class Capitulo extends Coleccion{
 		this.tema = tema;
 	}
 	
+	public Calculador getCalculador() {
+		return calculador;
+	}
+
+	public void setCalculador(Calculador calculador) {
+		this.calculador = calculador;
+	}
+
 	public ArrayList<Persona> getAutores(){
 		return new ArrayList<Persona>(this.autores);
 	}
@@ -42,8 +52,17 @@ public class Capitulo extends Coleccion{
 			this.autores.add(a);
 		}
 	}
+	@Override
+	public Coleccion getCopia(Filtro f) {
+		if(f.cumple(this)) {
+			return new Capitulo(this.getEditor(), this.getTitulo(), this.getCalculador(), this.getCantPag(), this.getTema());
+		}else {
+			return null;
+		}
+	}
 	
-	public Coleccion getCopia() {
-		return null;
+	@Override
+	public int getPrecio() {
+	    return this.getCalculador().getPrecio();
 	}
 }
