@@ -7,7 +7,8 @@ public class CompuestoRestringido extends Compuesto{
 	private Filtro filtro; // strategy
 	private ArrayList<Menu> menues;
 	
-	public CompuestoRestringido(Filtro f) {
+	public CompuestoRestringido(String nombre, Filtro f) {
+		super(nombre);
 		this.filtro = f;
 		this.menues = new ArrayList<>();
 	}

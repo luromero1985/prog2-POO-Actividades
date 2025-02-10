@@ -7,7 +7,8 @@ public class Compuesto extends Menu {
 	private ArrayList<Menu> menues;
 	private static double descuento = 0.1;
 
-	public Compuesto() {
+	public Compuesto(String nombre) {
+		super(nombre);
 		this.menues = new ArrayList<>();
 	}
 

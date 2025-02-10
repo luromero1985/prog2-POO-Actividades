@@ -29,7 +29,7 @@ public abstract class Tren {
 	
 	public abstract int cantAsientosDisponibles();
 	
-	public abstract Tren getCopia(); 
+	public abstract Tren getCopia(Filtro f); 
 	
     public abstract boolean asignarAsiento(Pasajero pasajero, Filtro filtro);
 
@@ -37,4 +37,4 @@ public abstract class Tren {
     }
 
 
-}
+

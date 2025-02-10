@@ -1,0 +1,19 @@
+Patrones usados:
+
+Composite
+Clases involucradas, Tren que es la clase abstracta, Seccion que es la clase compuesta, contiene un arreglo de trenes y Vagon que es la clase simple
+
+El patrón Composite permite tratar Seccion y Vagon como si fueran del mismo tipo (Tren), facilitando la estructura recursiva sin necesidad de conocer el tipo exacto del elemento. Esto se ve en métodos como cantAsientosDisponibles() y getCopia(Filtro f), que recorren toda la estructura sin importar si están en un Vagon o en una Seccion.
+
+
+Patron Strategy
+
+El Tren usa un Filtro como un atributo que luego usa en el metodo getCopia(Filtro f), asignarAsiento y asientosDisponibles
+
+El patrón Strategy permite que los criterios de filtrado sean flexibles y configurables en tiempo de ejecución, sin modificar la estructura de Tren, Vagon o Seccion. En lugar de usar condiciones fijas en los métodos, se delega la lógica de filtrado a una estrategia (Filtro).
+
+
+
+Método Template
+
+La clase Tren define métodos abstractos que sus subclases (Seccion y Vagon) implementan de manera distinta. Esto evita duplicación de código y mejora la organización del diseño.

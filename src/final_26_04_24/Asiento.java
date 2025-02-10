@@ -6,6 +6,7 @@ public class Asiento {
 	private int id;
 	private ArrayList<String> facilidades;
 	private boolean disponible;
+	private Pasajero pasajero;
 
 	public Asiento(int id) {
 		this.id = id;
@@ -38,5 +39,15 @@ public class Asiento {
 	public ArrayList<String> getFacilidades() {
 		return new ArrayList<String>(this.facilidades);
 	}
+	
+	public Pasajero getPasajero() {
+        return pasajero;
+    }
+	
+
+    public void asignarPasajero(Pasajero pasajero) {
+        this.pasajero = pasajero;
+        this.setDisponible(false);
+    }
 
 }

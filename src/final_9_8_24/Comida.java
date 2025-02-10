@@ -3,7 +3,7 @@ package final_9_8_24;
 import java.util.ArrayList;
 
 public class Comida extends Menu{
-	private String nombre;
+	
 	private int tiempoPreparacion;
 	private double precio;
 	private int calorias;
@@ -11,16 +11,14 @@ public class Comida extends Menu{
 
 	
 	public Comida(String nombre, int tiempoPreparacion, double precio, int calorias) {
-		this.nombre = nombre;
+		super(nombre);
 		this.tiempoPreparacion = tiempoPreparacion;
 		this.precio = precio;
 		this.calorias = calorias;
 		this.ingredientes=new ArrayList<>();
 	}
 	
-	
-	
-	
+		
 	public void addIngrediente(String ing) {
 		if(!this.ingredientes.contains(ing)) {
 			this.ingredientes.add(ing);
@@ -33,16 +31,6 @@ public class Comida extends Menu{
 		lista.addAll(this.ingredientes);
 		return lista;
 	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
 
 	public int getTiempoPreparacion() {
 		return tiempoPreparacion;

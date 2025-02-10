@@ -35,12 +35,25 @@ public class Vagon extends Tren {
 	}
 
 	@Override
-	public Tren getCopia() {
-		Vagon copia = new Vagon(this.getNombre());
-		for (Asiento asiento : this.asientos) {
-			copia.addAsiento(asiento);
+	public Tren getCopia(Filtro f) {
+		if (!this.asientos.isEmpty()) {
+			ArrayList<Asiento> asientosFiltrados = new ArrayList<>();
+			for (Asiento asiento : this.asientos) {
+				if (!asiento.isDisponible() && f.cumple(asiento.getPasajero()))
+					asientosFiltrados.add(asiento);
+			}
+			if (!asientosFiltrados.isEmpty()) {
+				Vagon copia = new Vagon(this.getNombre());
+				for (Asiento a : asientosFiltrados) {
+					copia.addAsiento(a);
+				}
+
+				return copia;
+			} else {
+				return null;
+			}
 		}
-		return copia;
+		return null;
 	}
 
 	@Override

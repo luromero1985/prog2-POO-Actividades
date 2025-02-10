@@ -31,17 +31,19 @@ public class Seccion extends Tren {
 	}
 
 	@Override
-	public Tren getCopia() {
-		Seccion copia = new Seccion(this.getNombre());
-
+	public Tren getCopia(Filtro f) {
+		ArrayList<Tren> elementos = new ArrayList<>();
 		for (Tren t : this.trenes) {
-			Tren hijo = t.getCopia();
+			Tren hijo = t.getCopia(f);
 			if (hijo != null) {
-				copia.addTren(hijo);
+				elementos.add(hijo);
 			}
 		}
-
-		if (!copia.getTrenes().isEmpty()) {
+		if (!elementos.isEmpty()) {
+			Seccion copia = new Seccion(this.getNombre());
+			for (Tren t : elementos) {
+				copia.addTren(t);
+			}
 			return copia;
 		} else {
 			return null;
