@@ -2,17 +2,15 @@ package final_26_04_24;
 
 import java.util.ArrayList;
 
-public class Asiento extends Tren {
-
+public class Asiento {
 	private int id;
 	private ArrayList<String> facilidades;
-	private boolean libre;
+	private boolean disponible;
 
-	public Asiento(String n, int id) {
-		super(n);
+	public Asiento(int id) {
 		this.id = id;
 		this.facilidades = new ArrayList<>();
-		this.libre = true;
+		this.disponible = true;
 	}
 
 	public int getId() {
@@ -23,12 +21,12 @@ public class Asiento extends Tren {
 		this.id = id;
 	}
 
-	public boolean isLibre() {
-		return libre;
+	public boolean isDisponible() {
+		return disponible;
 	}
 
-	public void setLibre(boolean libre) {
-		this.libre = libre;
+	public void setDisponible(boolean disponible) {
+		this.disponible = disponible;
 	}
 
 	public void addFacilidad(String f) {
@@ -37,29 +35,8 @@ public class Asiento extends Tren {
 		}
 	}
 
-	@Override
-	public int cantAsientos() {
-		return 1;
+	public ArrayList<String> getFacilidades() {
+		return new ArrayList<String>(this.facilidades);
 	}
 
-	@Override
-	public void asignarAsiento(Filtro f) {
-		if (this.isLibre()) {
-			this.setLibre(false);
-		}
-	}
-
-	@Override
-	public Tren getCopia(Filtro f) {
-
-		Asiento copia = new Asiento(this.getNombre(), this.getId());
-		if (!this.facilidades.isEmpty()) {
-			ArrayList<String> copiaFacilidades = new ArrayList<>(this.facilidades);
-
-			for (String facilidad : copiaFacilidades) {
-				copia.addFacilidad(facilidad);
-			}
-		}
-		return copia;
-	}
 }

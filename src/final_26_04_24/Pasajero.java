@@ -41,7 +41,11 @@ public void addPreferencia(String p) {
 	}
 }
 
-public ArrayList<String> getPreferencia(){
+public ArrayList<String> getPreferencias(){
 	return new ArrayList<String>(this.preferencias);
+}
+
+public boolean tienePreferencia(String preferencia) {
+    return this.preferencias.contains(preferencia);
 }
 }

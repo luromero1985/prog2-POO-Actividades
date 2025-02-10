@@ -12,7 +12,7 @@ public class FiltroPorEdadMenorA extends Filtro {
 	@Override
 	public boolean cumple(Pasajero p) {
 	
-		return this.edad<p.getEdad();
+		return this.edad>p.getEdad();
 	}
 
 }

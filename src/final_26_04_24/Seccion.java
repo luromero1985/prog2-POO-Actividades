@@ -12,7 +12,7 @@ public class Seccion extends Tren {
 	}
 
 	public void addTren(Tren t) {
-		if (this.trenes.contains(t)) {
+		if (!this.trenes.contains(t)) {
 			this.trenes.add(t);
 		}
 	}
@@ -22,22 +22,22 @@ public class Seccion extends Tren {
 	}
 
 	@Override
-	public int cantAsientos() {
+	public int cantAsientosDisponibles() {
 		int cantidad = 0;
 		for (Tren t : this.trenes) {
-			cantidad += t.cantAsientos();
+			cantidad += t.cantAsientosDisponibles();
 		}
 		return cantidad;
 	}
 
 	@Override
-	public Tren getCopia(Filtro f) {
+	public Tren getCopia() {
 		Seccion copia = new Seccion(this.getNombre());
 
 		for (Tren t : this.trenes) {
-			Tren hijo = t.getCopia(f);
+			Tren hijo = t.getCopia();
 			if (hijo != null) {
-				copia.addTren(t);
+				copia.addTren(hijo);
 			}
 		}
 
@@ -46,14 +46,25 @@ public class Seccion extends Tren {
 		} else {
 			return null;
 		}
+
 	}
 
 	@Override
-	public void asignarAsiento(Filtro f) {
-		for(Tren t: this.trenes) {
-			if(t.) {
-				t.asignarAsiento(f);
+	public boolean asignarAsiento(Pasajero pasajero, Filtro filtro) {
+		for (Tren t : this.trenes) {
+			if (t.asignarAsiento(pasajero, filtro)) {
+				return true; // Se asignó en alguna parte de la sección
 			}
 		}
+		return false;
+	}
+
+	@Override
+	public ArrayList<Asiento> getAsientosDisponibles(Pasajero p, Filtro f) {
+		ArrayList<Asiento> disponibles = new ArrayList<>();
+		for (Tren t : this.trenes) {
+			disponibles.addAll(t.getAsientosDisponibles(p, f));
+		}
+		return disponibles;
 	}
 }

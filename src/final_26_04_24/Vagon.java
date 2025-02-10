@@ -1,0 +1,80 @@
+package final_26_04_24;
+
+import java.util.ArrayList;
+
+public class Vagon extends Tren {
+
+	private ArrayList<Asiento> asientos;
+
+	public Vagon(String n) {
+		super(n);
+		this.asientos = new ArrayList<>();
+
+	}
+
+	public void addAsiento(Asiento a) {
+		if (!this.asientos.contains(a)) {
+			this.asientos.add(a);
+		}
+	}
+
+	public ArrayList<Asiento> getAsiento() {
+		return new ArrayList<>(this.asientos);
+	}
+
+	@Override
+	public int cantAsientosDisponibles() {
+
+		int cantidad = 0;
+		for (Asiento asiento : this.asientos) {
+			if (asiento.isDisponible()) {
+				cantidad++;
+			}
+		}
+		return cantidad;
+	}
+
+	@Override
+	public Tren getCopia() {
+		Vagon copia = new Vagon(this.getNombre());
+		for (Asiento asiento : this.asientos) {
+			copia.addAsiento(asiento);
+		}
+		return copia;
+	}
+
+	@Override
+	public boolean asignarAsiento(Pasajero pasajero, Filtro filtro) {
+		for (Asiento asiento : this.asientos) {
+			if (asiento.isDisponible() && cumpleCondiciones(asiento, pasajero, filtro)) {
+				asiento.setDisponible(false);
+				return true; // Asignación exitosa
+			}
+		}
+		return false; // No se encontró asiento disponible
+	}
+
+	private boolean cumpleCondiciones(Asiento asiento, Pasajero pasajero, Filtro filtro) {
+		return filtro.cumple(pasajero) && cumplePreferencias(asiento, pasajero);
+	}
+
+	private boolean cumplePreferencias(Asiento asiento, Pasajero pasajero) {
+		for (String preferencia : pasajero.getPreferencias()) {
+			if (!asiento.getFacilidades().contains(preferencia)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	@Override
+	public ArrayList<Asiento> getAsientosDisponibles(Pasajero p, Filtro f) {
+		ArrayList<Asiento> disponibles = new ArrayList<Asiento>();
+		for (Asiento asiento : this.asientos) {
+			if (asiento.isDisponible() && this.cumpleCondiciones(asiento, p, f)) {
+				disponibles.add(asiento);
+			}
+		}
+		return disponibles;
+	}
+}
