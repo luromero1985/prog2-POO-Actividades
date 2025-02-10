@@ -53,7 +53,7 @@ public void setPreferencias(Filtro preferencias) {
 
 
 
-public void addComidaSolicitada(Comida c) {
+public void addComidaSolicitada(Menu c) {
 	if(!this.comidaSolicitada.contains(c)) {
 		this.comidaSolicitada.add(c);
 	}
@@ -64,7 +64,12 @@ public ArrayList<Menu> getComidasSolicitadas(){
 	return new ArrayList<Menu>(this.comidaSolicitada); 
 }
 	
-	public boolean leGusta(Comida c) {
+
+public boolean yaLoPedi(Menu c) {
+	return this.comidaSolicitada.contains(c);
+}
+
+	public boolean leGusta(Menu c) {
 		return this.preferencias.cumple(c);
 	}
 }

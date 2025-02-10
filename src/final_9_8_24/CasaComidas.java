@@ -19,8 +19,8 @@ public class CasaComidas {
 	}
 
 
-	public boolean recomendacion(Comida c) {
-		return this.cliente.leGusta(c) && !this.cliente.getComidasSolicitadas().contains(c);
+	public boolean recomendacion(Menu c) {
+		return this.cliente.leGusta(c) && !this.cliente.yaLoPedi(c);
 	}
 	
 	
