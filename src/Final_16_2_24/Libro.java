@@ -8,8 +8,8 @@ public class Libro extends Coleccion {
 	private ArrayList<Coleccion> colecciones;
 	private LocalDate anioiPublic;
 
-	public Libro(Persona e, String t, Calculador c, LocalDate anioiPublic) {
-		super(e, t, c);
+	public Libro(Persona e, String t, LocalDate anioiPublic) {
+		super(e, t);
 		this.anioiPublic = anioiPublic;
 		this.colecciones = new ArrayList<>();
 	}
