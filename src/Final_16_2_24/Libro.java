@@ -6,20 +6,20 @@ import java.util.ArrayList;
 public class Libro extends Coleccion {
 
 	private ArrayList<Coleccion> colecciones;
-	private LocalDate anioiPublic;
+	private LocalDate anioPublic;
 
-	public Libro(Persona e, String t, LocalDate anioiPublic) {
+	public Libro(Persona e, String t, LocalDate anioPublic) {
 		super(e, t);
-		this.anioiPublic = anioiPublic;
+		this.anioPublic = anioPublic;
 		this.colecciones = new ArrayList<>();
 	}
 
 	public LocalDate getAnioiPublic() {
-		return anioiPublic;
+		return anioPublic;
 	}
 
-	public void setAnioiPublic(LocalDate anioiPublic) {
-		this.anioiPublic = anioiPublic;
+	public void setAnioPublic(LocalDate anioiPublic) {
+		this.anioPublic = anioiPublic;
 	}
 
 	public void addColeccion(Coleccion c) {
@@ -28,10 +28,10 @@ public class Libro extends Coleccion {
 		}
 	}
 
-	public ArrayList<Coleccion> getColecciones(){
-		return new ArrayList<>(this.colecciones);
-	}
-	
+	/*
+	 * public ArrayList<Coleccion> getColecciones() { return new
+	 * ArrayList<>(this.colecciones); }
+	 */
 	@Override
 	public int getCantPag() {
 		int cant = 0;
@@ -56,18 +56,22 @@ public class Libro extends Coleccion {
 
 	@Override
 	public Coleccion getCopia(Filtro f) {
-		Libro copia = new Libro(this.getEditor(), this.getTitulo(), this.getCalculador(), this.getAnioiPublic());
+		ArrayList<Coleccion> elem = new ArrayList<>();
+
 		for (Coleccion c : this.colecciones) {
 			Coleccion hijo = c.getCopia(f);
-			if (hijo != null) {
-				copia.addColeccion(hijo);
+			if (f.cumple(hijo)) {
+				elem.add(hijo);
 			}
 		}
-		if (!copia.getColecciones().isEmpty()) {
+		if (!elem.isEmpty()) {
+			Libro copia = new Libro(this.getEditor(), this.getTitulo(), this.getAnioiPublic());
+			for (Coleccion e : elem) {
+				copia.addColeccion(e);
+			}
 			return copia;
-		} else {
-			return null;
 		}
+		return null;
 	}
 
 	@Override
@@ -78,6 +82,13 @@ public class Libro extends Coleccion {
 		}
 		return total;
 	}
-	
 
+	public boolean esAutor(Persona p) {
+		for (Coleccion c : this.colecciones) {
+			if (c.esAutor(p)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

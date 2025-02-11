@@ -32,13 +32,12 @@ public class Compuesta extends Comida {
 		}
 		return tiempo;
 	}
-	
+
 	public double getPrecio() {
-		 	int precio = 0;
-			for (Comida comida : menu) {
-				precio += comida.getPrecio();
-			}
-			return precio;
+		int precio = 0;
+		for (Comida comida : menu) {
+			precio += comida.getPrecio();
 		}
+		return precio;
 	}
 }

@@ -52,13 +52,19 @@ public class Capitulo extends Coleccion{
 			this.autores.add(a);
 		}
 	}
+	public boolean esAutor(Persona p) {
+		return this.autores.contains(p);
+	}
 	@Override
 	public Coleccion getCopia(Filtro f) {
 		if(f.cumple(this)) {
-			return new Capitulo(this.getEditor(), this.getTitulo(), this.getCalculador(), this.getCantPag(), this.getTema());
-		}else {
-			return null;
+			Capitulo copia= new Capitulo(this.getEditor(), this.getTitulo(), this.getCalculador(), this.getCantPag(), this.getTema());
+			for(Persona p:this.autores) {
+				copia.addAutor(p);
+			}
+			return copia;
 		}
+			return null;
 	}
 	
 	@Override

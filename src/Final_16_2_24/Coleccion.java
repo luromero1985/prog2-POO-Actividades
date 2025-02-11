@@ -7,19 +7,23 @@ public abstract class Coleccion {
 	private Persona editor;
 	private String titulo;
 
-
 	public Coleccion(Persona e, String t) {
 		this.editor = e;
-		this.titulo = t;}
+		this.titulo = t;
+	}
 
 	public Persona getEditor() {
 		return editor;
 	}
 
 	public void setEditor(Persona editor) {
+		if(!this.esAutor(editor)) {
 		this.editor = editor;
+		}
 	}
-
+	public abstract boolean esAutor(Persona p);
+	
+	
 	public String getTitulo() {
 		return titulo;
 	}
@@ -27,7 +31,6 @@ public abstract class Coleccion {
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-
 
 	public boolean equals(Object o) {
 		try {
@@ -49,8 +52,7 @@ public abstract class Coleccion {
 	public abstract ArrayList<Persona> getAutores();
 
 	public abstract Coleccion getCopia(Filtro f);
-	
-	
+
 	public abstract int getPrecio();
 
 }

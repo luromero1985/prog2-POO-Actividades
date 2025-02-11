@@ -8,7 +8,7 @@ public class FiltroPorTipoPreparacion extends Filtro {
 	}
 
 	public boolean cumple(Comida c) {
-		return c.getTipo().equals(this.tipoP);
+		return c.getTipo()==(this.tipoP);
 	}
 
 }
