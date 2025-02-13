@@ -3,11 +3,11 @@ package final_20_12_24;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Comprimido extends Compuesto{
+public class CompuestoComprimido extends Compuesto{
 
 	private int porcCompresion;
 
-	public Comprimido(String nombre, LocalDate f, int pc) {
+	public CompuestoComprimido(String nombre, LocalDate f, int pc) {
 		super(nombre, f);
 		this.porcCompresion = pc;
 	}

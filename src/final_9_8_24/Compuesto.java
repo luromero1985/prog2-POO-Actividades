@@ -31,7 +31,7 @@ public class Compuesto extends Menu {
 		int tiempoMayor = 0;
 		for (Menu menu : menues) {
 			if (menu.getTiempoPreparacion() > tiempoMayor) {
-				tiempoMayor = menu.getTiempoPreparacion();
+				tiempoMayor = menu.getTiempoPreparacion(); //puedo mejorar que no llame 2 veces comn un aux
 			}
 		}
 		return tiempoMayor;
@@ -39,7 +39,7 @@ public class Compuesto extends Menu {
 
 	@Override
 	public double getPrecio() {
-		int precio = 0;
+		double precio = 0;
 		for (Menu menu : menues) {
 			precio += menu.getPrecio();
 		}

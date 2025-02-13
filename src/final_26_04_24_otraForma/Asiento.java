@@ -75,14 +75,8 @@ public class Asiento extends Tren {
 		return aux;
 	}
 	
-	public int informeDisponibilidad() {
-		
-		if(this.getPasajero()==null) {
-			return 1;
-		}
-		else {
-			return 0;
-		}
+	public int cantAsientos() {
+		return 1;
 	}
 	
 	public Tren copiaMia(Condicion c) {

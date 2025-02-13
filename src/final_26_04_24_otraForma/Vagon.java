@@ -2,12 +2,12 @@ package final_26_04_24_otraForma;
 
 import java.util.ArrayList;
 
-public class Seccion extends Tren {
+public class Vagon extends Tren {
 	private String nombre;
 	private ArrayList<Tren> divisiones;
 
 
-	public Seccion(String nombre) {
+	public Vagon(String nombre) {
 		this.nombre=nombre;
 		this.divisiones= new ArrayList<Tren>();
 	}
@@ -28,7 +28,7 @@ public class Seccion extends Tren {
 
 	public boolean equals(Object o) {
 		try {
-			Seccion otro = (Seccion)o;
+			Vagon otro = (Vagon)o;
 			return this.getNombre().equals(otro.getNombre());
 		}
 		catch (Exception e) {
@@ -50,10 +50,10 @@ public class Seccion extends Tren {
 		
 	}
 
-	public int informeDisponibilidad() {
+	public int cantAsientos() {
 		int i=0;
 		for(Tren t: this.divisiones) {
-			i = i + t.informeDisponibilidad();
+			i = i + t.cantAsientos();
 		}
 		return i;
 	}
@@ -67,7 +67,7 @@ public class Seccion extends Tren {
 			}
 		}
 		if(!elementos.isEmpty()) {
-			Seccion copiaMia = new Seccion(this.getNombre());
+			Vagon copiaMia = new Vagon(this.getNombre());
 			for(Tren t:elementos) {
 				copiaMia.addDivision(t);
 			}

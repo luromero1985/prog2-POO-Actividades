@@ -10,7 +10,9 @@ public class SistemaTrenes {
 	}
 
 	public void agregarTren(Tren tren) {
-		this.trenesDisponibles.add(tren);
+		if (!this.trenesDisponibles.contains(tren)) {
+			this.trenesDisponibles.add(tren);
+		}
 	}
 
 	public ArrayList<Asiento> getAsientosDisponibles(Pasajero pasajero, Filtro filtro) {
@@ -22,14 +24,14 @@ public class SistemaTrenes {
 	}
 
 	public boolean asignarAsiento(Pasajero pasajero, Filtro filtro) {
-	        for (Tren tren : trenesDisponibles) {
-	            if (tren.asignarAsiento(pasajero, filtro)) {
-	                return true; 
-	            }
-	        }
-	        return false;
+		for (Tren tren : trenesDisponibles) {
+			if (tren.asignarAsiento(pasajero, filtro)) {
+				return true;
+			}
+		}
+		return false;
 	}
-	
+
 	public int totalAsientos() {
 		int total = 0;
 		for (Tren tren : trenesDisponibles) {
@@ -37,17 +39,16 @@ public class SistemaTrenes {
 		}
 		return total;
 	}
-	
-	
-    public SistemaTrenes filtrarSistemaPorPasajeros(Filtro criterio) {
-        SistemaTrenes sistemaFiltrado = new SistemaTrenes();
 
-        for (Tren tren : trenesDisponibles) {
-            Tren trenFiltrado = tren.getCopia(criterio);
-            if (trenFiltrado != null) {
-                sistemaFiltrado.agregarTren(trenFiltrado);
-            }
-        }
-        return sistemaFiltrado;
-}
+	public SistemaTrenes filtrarSistemaPorPasajeros(Filtro criterio) {
+		SistemaTrenes sistemaFiltrado = new SistemaTrenes();
+
+		for (Tren tren : trenesDisponibles) {
+			Tren trenFiltrado = tren.getCopia(criterio);
+			if (trenFiltrado != null) {
+				sistemaFiltrado.agregarTren(trenFiltrado);
+			}
+		}
+		return sistemaFiltrado;
+	}
 }

@@ -30,9 +30,8 @@ public class Terminal extends Estructura {
 	}
 
 	// terminal con más elementos
-	public ArrayList<Object> getColaConMasElementos() {
-		ArrayList<Object> rta = new ArrayList<>(this.objetos);
-		return rta;
+	public Terminal getColaConMasElementos() {
+		return this;
 	}
 
 	// cantidad de colas terminales
@@ -42,17 +41,16 @@ public class Terminal extends Estructura {
 
 	// eliminar objeto
 	@Override
-	public void removeObjeto(Object o) {
+	public void eliminarObjeto(Object o) {
 		if (this.objetos.contains(o)) {
-			this.removeObjeto(o);
+			this.objetos.remove(o);
 		}
 	}
 
 	// control de objeto en la estructura
 	public boolean estaObjeto(Object o) {
-		if (this.objetos.isEmpty()) {
-			return false;
-		} else if (this.objetos.contains(o)) {
+	
+		if (this.objetos.contains(o)) {
 			return true;
 		} else {
 			return false;
@@ -60,14 +58,21 @@ public class Terminal extends Estructura {
 	}
 
 	// copia de la lista
-	public ArrayList<Object> getCopia() {
-		ArrayList<Object> copia = new ArrayList<>();
+	public Estructura getCopia() {
+		ArrayList<Object> elemento = new ArrayList<>();
 		for (Object a : this.objetos) {
-			if (!this.objetos.contains(a)) {
-				this.objetos.add(a);
+			if (!elemento.contains(a) && a != null) {
+				elemento.add(a);
 			}
 		}
-		return copia;
+		if (!elemento.isEmpty()) {
+			Terminal copia = new Terminal();
+			for (Object o : elemento) {
+				copia.addObjeto(o);
+			}
+			return copia;
+		}
+		return null;
 
 	}
 }

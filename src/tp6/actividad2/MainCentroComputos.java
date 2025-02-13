@@ -1,5 +1,6 @@
 package tp6.actividad2;
 
+import java.util.ArrayList;
 import java.util.Collections;
 
 public class MainCentroComputos {
@@ -23,19 +24,24 @@ public class MainCentroComputos {
         Computadora c5 = new Computadora("comp5", 5,32);
         Computadora c6 = new Computadora("comp6", 2,8);
 
-        ListaOrdenada computadoras = new ListaOrdenada();
-        computadoras.agregarElemento(c5);
+       // ListaOrdenada computadoras = new ListaOrdenada();
+      /*  computadoras.agregarElemento(c5);
         computadoras.agregarElemento(c1);
         computadoras.agregarElemento(c2);
         computadoras.agregarElemento(c3);
         computadoras.agregarElemento(c4);
         computadoras.agregarElemento(c6);
-
+*/
+        
+        ArrayList<Computadora> computadoras=new ArrayList<>();
+        computadoras.add(c6);
+        computadoras.add(c1);
+        computadoras.add(c2);
         System.out.println("Computadoras ordenadas por velocidad");
         System.out.println(computadoras);
  
         System.out.println("hola".compareTo("hau"));
-      // Collections.sort(computadoras, new ComparadorNombre());
+      Collections.sort(computadoras, new ComparadorNombre());
 
 	}
 

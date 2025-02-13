@@ -29,8 +29,8 @@ public class Pasteleria {
 			}
 			if (j < this.estaciones.size() && this.estaciones.get(j).puedoPreparar(c)) {
 				this.estaciones.get(j).elaboracionAsignada(c);
+			
 			}
-
 		}
 	}
 

@@ -17,10 +17,10 @@ public class Seccion extends Tren {
 		}
 	}
 
-	public ArrayList<Tren> getTrenes() {
+	/*public ArrayList<Tren> getTrenes() {
 		return new ArrayList<Tren>(this.trenes);
 	}
-
+*/  
 	@Override
 	public int cantAsientosDisponibles() {
 		int cantidad = 0;
