@@ -35,25 +35,21 @@ public class Cola extends Estructura {
 			this.estructuras.add(e);
 		}
 	}
-	
+
 	@Override
 	public Object getObject() {
 		int pos = this.recuperar.subCola(this.estructuras);
-		Object rta=null;
-		if (pos >= 0 && pos < this.estructuras.size()) {
-			rta= this.estructuras.get(pos).getObject();
-		}
+		Object rta = this.estructuras.get(pos).getObject();
+
 		return rta;
 	}
 
 	@Override
 	public void addObjeto(Object o) {
 		int pos = this.agregar.subCola(this.estructuras);
-		if (pos >= 0 && pos < this.estructuras.size()) {
-			this.estructuras.get(pos).addObjeto(o);
-		}
-	}
 
+		this.estructuras.get(pos).addObjeto(o);
+	}
 
 	@Override
 	public int getCantidadElementos() {
@@ -108,13 +104,12 @@ public class Cola extends Estructura {
 				elementos.add(hijo);
 			}
 		}
-		if (!elementos.isEmpty()) {
-			Cola copia = new Cola(this.getAgregar(), this.getRecuperar());
-			for (Estructura e : elementos) {
-				copia.addEstructura(e);
-			}
-			return copia;
+
+		Cola copia = new Cola(this.getAgregar(), this.getRecuperar());
+		for (Estructura e : elementos) {
+			copia.addEstructura(e);
 		}
-		return null;
+		return copia;
+
 	}
 }

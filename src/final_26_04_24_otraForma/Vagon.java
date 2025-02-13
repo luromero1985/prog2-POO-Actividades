@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 public class Vagon extends Tren {
 	private String nombre;
-	private ArrayList<Tren> divisiones;
+	private ArrayList<Tren> trenes;
 
 
 	public Vagon(String nombre) {
 		this.nombre=nombre;
-		this.divisiones= new ArrayList<Tren>();
+		this.trenes= new ArrayList<Tren>();
 	}
 
 	public void setNombre(String n) {
@@ -20,9 +20,9 @@ public class Vagon extends Tren {
 		return this.nombre;
 	}
 
-	public void addDivision(Tren t) {
-		if(!this.divisiones.contains(t)) {
-			divisiones.add(t);
+	public void addTren(Tren t) {
+		if(!this.trenes.contains(t)) {
+			trenes.add(t);
 		}
 	}
 
@@ -38,7 +38,7 @@ public class Vagon extends Tren {
 
 	public ArrayList<Asiento> lugaresDisponibles(Persona p){
 		ArrayList<Asiento> aux = new ArrayList<>();
-		 for(Tren t : this.divisiones) {
+		 for(Tren t : this.trenes) {
 			 ArrayList<Asiento> nuevos = t.lugaresDisponibles(p);
 			 if(!nuevos.isEmpty()) {
 				 for(Asiento a: nuevos) {
@@ -52,7 +52,7 @@ public class Vagon extends Tren {
 
 	public int cantAsientos() {
 		int i=0;
-		for(Tren t: this.divisiones) {
+		for(Tren t: this.trenes) {
 			i = i + t.cantAsientos();
 		}
 		return i;
@@ -60,7 +60,7 @@ public class Vagon extends Tren {
 
 	public Tren copiaMia(Condicion c) {
 		ArrayList<Tren> elementos = new ArrayList<>();
-		for(Tren t:this.divisiones) {
+		for(Tren t:this.trenes) {
 			Tren hijo = t.copiaMia(c);
 			if(hijo!=null) {
 				elementos.add(hijo);
@@ -69,7 +69,7 @@ public class Vagon extends Tren {
 		if(!elementos.isEmpty()) {
 			Vagon copiaMia = new Vagon(this.getNombre());
 			for(Tren t:elementos) {
-				copiaMia.addDivision(t);
+				copiaMia.addTren(t);
 			}
 			return copiaMia;
 		}
