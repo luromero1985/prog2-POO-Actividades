@@ -39,14 +39,7 @@ public class Terminal extends Estructura {
 		return 1;
 	}
 
-	// eliminar objeto
-	@Override
-	public void eliminarObjeto(Object o) {
-		if (this.objetos.contains(o)) {
-			this.objetos.remove(o);
-		}
-	}
-
+	
 	// control de objeto en la estructura
 	public boolean estaObjeto(Object o) {
 	

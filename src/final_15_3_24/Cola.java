@@ -54,14 +54,7 @@ public class Cola extends Estructura {
 		}
 	}
 
-	@Override
-	public void eliminarObjeto(Object o) {
-		int pos = this.recuperar.subCola(this.estructuras);
-		if (pos >= 0 && pos < this.estructuras.size()) {
-			
-			this.estructuras.get(pos).eliminarObjeto(o);
-		}
-	}
+
 	@Override
 	public int getCantidadElementos() {
 		int cantidad = 0;
