@@ -3,7 +3,7 @@ package final_1_12_23;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public abstract class Tarea implements Comparable<Tarea>, Comparator<Tarea>{
+public abstract class Tarea implements Comparable<Tarea>{
 	private String nombre;
 
 	public Tarea(String n) {

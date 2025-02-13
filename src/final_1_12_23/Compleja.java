@@ -41,6 +41,7 @@ public class Compleja extends Tarea {
 		return tiempo;
 	}
 
+	@Override
 	public ArrayList<Tarea> buscar(Filtro f, Comparator<Tarea> c) {
 		ArrayList<Tarea> respuesta = new ArrayList<>();
 		if (f.cumple(this)) {
@@ -59,7 +60,7 @@ public class Compleja extends Tarea {
 			return respuesta;
 		}
 	}
-
+@Override
 	public ArrayList<Tarea> buscar(Filtro f) {
 		ArrayList<Tarea> respuesta = new ArrayList<>();
 		if (f.cumple(this)) {
@@ -79,6 +80,7 @@ public class Compleja extends Tarea {
 		return respuesta;
 	}
 
+	@Override
 	public Tarea getCopia() {
 
 		Compleja copia = new Compleja(this.getNombre());
@@ -89,4 +91,6 @@ public class Compleja extends Tarea {
 		return copia;
 
 	}
+
+
 }
