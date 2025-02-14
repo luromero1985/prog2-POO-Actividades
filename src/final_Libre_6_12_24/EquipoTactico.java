@@ -65,7 +65,7 @@ public class EquipoTactico extends Traje {
 		
 		for (Traje t: this.trajes) {
 			Traje hijo= t.getCopia(m);
-			copia.addTrajes(hijo);;
+			copia.addTrajes(hijo);
 		}
 		return copia;
 	}
